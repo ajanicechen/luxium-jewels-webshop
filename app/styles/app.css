@@ -362,6 +362,18 @@ aside li {
   display: flex;
 }
 
+.count-badge{
+  position: relative;
+  top: -8px;
+  left: -4px;
+  padding: 4px 8px;
+  border-radius: 50%;
+
+  background: #779DBB;
+  color: white;
+  font-size: 12px;
+}
+
 /*
 * --------------------------------------------------
 * components/Search

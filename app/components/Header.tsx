@@ -146,7 +146,7 @@ function CartBadge({count}: {count: number}) {
   return <a href="#cart-aside">
     {/* Cart */}
     <FontAwesomeIcon icon={faBagShopping} />
-    {count}
+    {(count > 0) && <span className="count-badge">{count}</span>}
     </a>;
 }
 
