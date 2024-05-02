@@ -1,24 +1,26 @@
-import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
-import {Await, useLoaderData, Link, type MetaFunction} from '@remix-run/react';
-import {Suspense} from 'react';
-import {Image, Money} from '@shopify/hydrogen';
+import { defer, type LoaderFunctionArgs } from '@shopify/remix-oxygen';
+import { Await, useLoaderData, Link, type MetaFunction } from '@remix-run/react';
+import { Suspense } from 'react';
+import { Image, Money } from '@shopify/hydrogen';
 import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
 import { UspCarousel } from '~/components/UspCarousel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 
 export const meta: MetaFunction = () => {
-  return [{title: 'Demoshop | Home'}];
+  return [{ title: 'Demoshop | Home' }];
 };
 
-export async function loader({context}: LoaderFunctionArgs) {
-  const {storefront} = context;
-  const {collections} = await storefront.query(FEATURED_COLLECTION_QUERY);
+export async function loader({ context }: LoaderFunctionArgs) {
+  const { storefront } = context;
+  const { collections } = await storefront.query(FEATURED_COLLECTION_QUERY);
   const featuredCollection = collections.nodes[0];
   const recommendedProducts = storefront.query(RECOMMENDED_PRODUCTS_QUERY);
 
-  return defer({featuredCollection, recommendedProducts});
+  return defer({ featuredCollection, recommendedProducts });
 }
 
 export default function Homepage() {
@@ -67,7 +69,7 @@ function RecommendedProducts({
       <h2>Some Great!!!!! Recommended Products</h2>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
-          {({products}) => (
+          {({ products }) => (
             <div className="recommended-products-grid">
               {products.nodes.map((product) => (
                 <Link
@@ -80,10 +82,17 @@ function RecommendedProducts({
                     aspectRatio="1/1"
                     sizes="(min-width: 45em) 20vw, 50vw"
                   />
-                  <h4>{product.title}</h4>
-                  <small>
-                    <Money data={product.priceRange.minVariantPrice} />
-                  </small>
+                  <div className="card-info">
+                    <div className="pr-info">
+                      <h4>{product.title}</h4>
+                      <small>
+                        <Money data={product.priceRange.minVariantPrice} />
+                      </small>
+                    </div>
+                    <button className='add-to-cart-btn'>
+                      {(window.screen.width > 720) ? <FontAwesomeIcon icon={faBagShopping} /> : 'add to cart'}
+                    </button>
+                  </div>
                 </Link>
               ))}
             </div>

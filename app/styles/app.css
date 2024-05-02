@@ -453,10 +453,58 @@ aside li {
   @media (min-width: 45em) {
     grid-template-columns: repeat(4, 1fr);
   }
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }
 
 .recommended-product img {
   height: auto;
+}
+
+.add-to-cart-btn{
+  padding: 8px 12px;
+  border-radius: 4px;
+  background: #AED0BA;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 700;
+  width: 100%;
+  height: fit-content;
+  
+  @media (min-width: 45em) {
+    width: fit-content;
+    height: fit-content;
+  }
+
+  svg{
+    color: #1C3123;
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.card-info{
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+
+  @media (min-width: 45em) {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: end;
+  }
+}
+
+.pr-info{
+  display: flex;
+  flex-flow: column nowrap;
+
+  @media (min-width: 45em) {
+    flex-flow: column nowrap;
+    justify-content: space-between;
+  }
 }
 
 /*
