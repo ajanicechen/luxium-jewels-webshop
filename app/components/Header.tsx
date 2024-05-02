@@ -3,6 +3,17 @@ import {Suspense} from 'react';
 import type {HeaderQuery} from 'storefrontapi.generated';
 import type {LayoutProps} from './Layout';
 import {useRootLoaderData} from '~/root';
+import UserIcon from 'public/images/icons/user_icon.svg';
+import shopLogo from 'public/images/shop_logo.svg';
+
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+
+//import { Badge } from '@mui/material';
 
 type HeaderProps = Pick<LayoutProps, 'header' | 'cart' | 'isLoggedIn'>;
 
@@ -11,16 +22,22 @@ type Viewport = 'desktop' | 'mobile';
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
-    <header className="header">
-      <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-        <strong>{shop.name}</strong>
-      </NavLink>
-      <HeaderMenu
-        menu={menu}
-        viewport="desktop"
-        primaryDomainUrl={header.shop.primaryDomain.url}
-      />
-      <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+    <header className="header-container">
+      <div className="header">
+        <HeaderMenuMobileToggle />
+        <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
+          {/* <strong>{shop.name}</strong> */}
+          <img src={shopLogo} alt='logo luxium jewels' />
+        </NavLink>
+        <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+      </div>
+      <div className="header-nav">
+        <HeaderMenu
+            menu={menu}
+            viewport="desktop"
+            primaryDomainUrl={header.shop.primaryDomain.url}
+          />
+      </div>
     </header>
   );
 }
@@ -43,7 +60,6 @@ export function HeaderMenu({
       window.location.href = event.currentTarget.href;
     }
   }
-
   return (
     <nav className={className} role="navigation">
       {viewport === 'mobile' && (
@@ -55,6 +71,7 @@ export function HeaderMenu({
           to="/"
         >
           Home
+          <FontAwesomeIcon icon={faChevronRight} />
         </NavLink>
       )}
       {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
@@ -78,6 +95,7 @@ export function HeaderMenu({
             to={url}
           >
             {item.title}
+            {viewport === 'mobile' && <FontAwesomeIcon icon={faChevronRight} />}
           </NavLink>
         );
       })}
@@ -85,21 +103,23 @@ export function HeaderMenu({
   );
 }
 
+//Ctas == call to actions (icon buttons on the right of header)
 function HeaderCtas({
   isLoggedIn,
   cart,
 }: Pick<HeaderProps, 'isLoggedIn' | 'cart'>) {
   return (
     <nav className="header-ctas" role="navigation">
-      <HeaderMenuMobileToggle />
+      {/* <HeaderMenuMobileToggle /> */}
+      <SearchToggle />
       <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
         <Suspense fallback="Sign in">
           <Await resolve={isLoggedIn} errorElement="Sign in">
-            {(isLoggedIn) => (isLoggedIn ? 'Account' : 'Sign in')}
+            {/* {(isLoggedIn) => (isLoggedIn ? 'Account' : 'Sign in')} */}
+            <FontAwesomeIcon icon={faUser} />
           </Await>
         </Suspense>
       </NavLink>
-      <SearchToggle />
       <CartToggle cart={cart} />
     </nav>
   );
@@ -113,12 +133,21 @@ function HeaderMenuMobileToggle() {
   );
 }
 
+//btn to toggle search aside dialog
 function SearchToggle() {
-  return <a href="#search-aside">Search</a>;
+  return (
+    <a href="#search-aside">
+      <FontAwesomeIcon icon={faMagnifyingGlass} />
+      </a>
+  )
 }
 
 function CartBadge({count}: {count: number}) {
-  return <a href="#cart-aside">Cart {count}</a>;
+  return <a href="#cart-aside">
+    {/* Cart */}
+    <FontAwesomeIcon icon={faBagShopping} />
+    {count}
+    </a>;
 }
 
 function CartToggle({cart}: Pick<HeaderProps, 'cart'>) {

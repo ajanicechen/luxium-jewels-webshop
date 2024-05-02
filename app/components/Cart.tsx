@@ -13,9 +13,10 @@ type CartMainProps = {
 
 export function CartMain({layout, cart}: CartMainProps) {
   const linesCount = Boolean(cart?.lines?.nodes?.length || 0);
-  const withDiscount =
-    cart &&
-    Boolean(cart.discountCodes.filter((code) => code.applicable).length);
+  const withDiscount = cart;
+    //temporary fix for properties cannot read
+    // cart &&
+    // Boolean(cart.discountCodes.filter((code) => code.applicable).length);
   const className = `cart-main ${withDiscount ? 'with-discount' : ''}`;
 
   return (

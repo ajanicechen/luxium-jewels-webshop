@@ -20,7 +20,7 @@ export default function Collections() {
 
   return (
     <div className="collections">
-      <h1>Collections</h1>
+      <h1>Our Great!! Collections</h1>
       <Pagination connection={collections}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (
           <div>
@@ -58,7 +58,8 @@ function CollectionItem({
 }: {
   collection: CollectionFragment;
   index: number;
-}) {
+}){
+  // console.log(collection.image?.url);
   return (
     <Link
       className="collection-item"
@@ -70,11 +71,13 @@ function CollectionItem({
         <Image
           alt={collection.image.altText || collection.title}
           aspectRatio="1/1"
-          data={collection.image}
+          // data={collection.image}
+          src={'https://cdn.shopify.com/s/files/1/0688/1755/1382/collections/cd_three_pairs_of_neatly_arranged_men_and_womens_running_shoes._f4121e54-2c8a-4ad2-b366-355c0cc4348d_6.png?v=1675467128'}
           loading={index < 3 ? 'eager' : undefined}
         />
       )}
-      <h5>{collection.title}</h5>
+      {/* <h5>{collection.title}</h5> */}
+      <h5>its just shirts</h5>
     </Link>
   );
 }
