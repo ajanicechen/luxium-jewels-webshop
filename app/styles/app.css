@@ -119,6 +119,7 @@ aside li {
   pointer-events: auto;
   visibility: visible;
 }
+
 /* reveal aside */
 .overlay:target aside {
   transform: translateX(calc(var(--aside-width) * -1));
@@ -132,33 +133,47 @@ aside li {
 */
 
 @keyframes scroll {
-	0% { transform: translateX(0); }
-	100% { transform: translateX(calc(-250px * 7))}
-}
-.carousel-container{
-  .carousel-wrapper{
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    gap: 40px;
-  
-    overflow: hidden;
-    animation: scroll 40s linear infinite;
-    width: fit-content;
 
-    /* @media (min-width: 45em) {
-      width: 100%;
-    } */
-  
-    .carousel-item{
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      gap: 8px;
-  
-      white-space: nowrap;
-    }
+  /* 0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-250px * 7))} */
+  0% {
+    transform: translate(0, 0);
   }
+
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+
+.carousel-container {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 40px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.carousel-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 40px;
+
+  /* //overflow: hidden; */
+  /* animation: scroll 40s linear infinite; */
+  width: fit-content;
+}
+
+.carousel-item {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 8px;
+
+  white-space: nowrap;
+}
+
+.carousel-wrapper:hover {
+  animation-play-state: paused;
 }
 
 /*
@@ -167,24 +182,24 @@ aside li {
 * --------------------------------------------------
 */
 
-.header-container{
+.header-container {
 
   @media (min-width: 48em) {
     display: flex;
     flex-direction: column;
 
-    .header-nav{
+    .header-nav {
       background: #925471;
       padding: 8px 48px;
     }
   }
-  
+
 }
 
 .header {
   display: flex;
   gap: 16px;
-  
+
   align-items: center;
   background: #fff;
   display: flex;
@@ -210,7 +225,7 @@ aside li {
   flex-direction: column;
   /* grid-gap: 1rem;  */
 
-  a{
+  a {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -232,7 +247,7 @@ aside li {
 }
 
 .header-menu-item {
- /* background: red; */
+  /* background: red; */
   /* display: flex;
   justify-content: space-between;
   align-items: center;
@@ -256,13 +271,13 @@ aside li {
   grid-gap: 24px;
   margin-left: auto;
 
-  svg{
+  svg {
     color: #311C26;
   }
 }
 
 /* indiv icon on the right */
-.header-icon{
+.header-icon {
   height: 100%;
 }
 
@@ -346,6 +361,7 @@ aside li {
   align-items: center;
   display: flex;
 }
+
 /*
 * --------------------------------------------------
 * components/Search
@@ -405,6 +421,7 @@ aside li {
 
 .featured-collection-image {
   aspect-ratio: 1 / 1;
+
   @media (min-width: 45em) {
     aspect-ratio: 16 / 9;
   }
@@ -420,6 +437,7 @@ aside li {
   display: grid;
   grid-gap: 1.5rem;
   grid-template-columns: repeat(2, 1fr);
+
   @media (min-width: 45em) {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -436,7 +454,7 @@ aside li {
 */
 
 .collections {
-  h1{
+  h1 {
     color: green;
   }
 }
@@ -460,6 +478,7 @@ aside li {
 .collection-description {
   margin-bottom: 1rem;
   max-width: 95%;
+
   @media (min-width: 45em) {
     max-width: 600px;
   }
@@ -484,6 +503,7 @@ aside li {
 */
 .product {
   display: grid;
+
   @media (min-width: 45em) {
     grid-template-columns: 1fr 1fr;
     grid-gap: 4rem;
