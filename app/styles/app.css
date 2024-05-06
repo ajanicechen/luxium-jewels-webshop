@@ -339,8 +339,12 @@ aside li {
 }
 
 .cart-summary-aside {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 16px;
+
   background: white;
-  border-top: 1px solid var(--color-dark);
+  border-top: 1px solid #9CA3AF;
   bottom: 0;
   padding-top: 0.75rem;
   position: absolute;
@@ -358,8 +362,14 @@ aside li {
 }
 
 .cart-subtotal {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
   align-items: center;
   display: flex;
+
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .count-badge{
