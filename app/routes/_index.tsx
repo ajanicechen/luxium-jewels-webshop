@@ -66,7 +66,6 @@ function RecommendedProducts({
   return (
     <div className="recommended-products">
       {/* <h2>Recommended Products</h2> */}
-      <h2>Some Great!!!!! Recommended Products</h2>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({ products }) => (
@@ -77,21 +76,24 @@ function RecommendedProducts({
                   className="recommended-product"
                   to={`/products/${product.handle}`}
                 >
-                  <Image
-                    data={product.images.nodes[0]}
-                    aspectRatio="1/1"
-                    sizes="(min-width: 45em) 20vw, 50vw"
-                  />
-                  <div className="card-info">
-                    <div className="pr-info">
-                      <h4>{product.title}</h4>
-                      <small>
-                        <Money data={product.priceRange.minVariantPrice} />
-                      </small>
+                  <div className="cards-container">
+                    <Image
+                      data={product.images.nodes[0]}
+                      aspectRatio="1/1"
+                      sizes="(min-width: 45em) 20vw, 50vw"
+                    />
+                    <div className="card-wrapper">
+                      <div className="card-info">
+                        <h4>{product.title}</h4>
+                        <small>
+                          <Money data={product.priceRange.minVariantPrice} />
+                        </small>
+                      </div>
+                      <button className='add-to-cart-btn'>
+                        {/* {isMobile ? 'add to cart' : <FontAwesomeIcon icon={faBagShopping} />} */}
+                        {(window.screen.width > 720) ? <FontAwesomeIcon icon={faBagShopping} /> : 'add to cart'}
+                      </button>
                     </div>
-                    <button className='add-to-cart-btn'>
-                      {(window.screen.width > 720) ? <FontAwesomeIcon icon={faBagShopping} /> : 'add to cart'}
-                    </button>
                   </div>
                 </Link>
               ))}

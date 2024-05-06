@@ -446,16 +446,29 @@ aside li {
 }
 
 .recommended-products-grid {
-  display: grid;
-  grid-gap: 1.5rem;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-flow: row nowrap;
+  overflow-x: scroll;
+  width: fit-content;
+  gap: 16px;
 
   @media (min-width: 45em) {
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
+    transition: all 1s ease-out;
   }
-  @media (min-width: 1200px) {
+
+  @media (min-width: 1536) {
     grid-template-columns: repeat(6, 1fr);
   }
+}
+
+.recommended-products{
+  overflow-x: scroll;
+}
+
+.recommended-product {
+  width: 220px;
 }
 
 .recommended-product img {
@@ -485,7 +498,7 @@ aside li {
   }
 }
 
-.card-info{
+.card-wrapper{
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -497,13 +510,15 @@ aside li {
   }
 }
 
-.pr-info{
+.card-info{
   display: flex;
   flex-flow: column nowrap;
 
   @media (min-width: 45em) {
     flex-flow: column nowrap;
     justify-content: space-between;
+    /* white-space: nowrap;
+    overflow: hidden; */
   }
 }
 
