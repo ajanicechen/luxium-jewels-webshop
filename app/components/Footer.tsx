@@ -1,11 +1,12 @@
-import {NavLink} from '@remix-run/react';
-import type {FooterQuery, HeaderQuery} from 'storefrontapi.generated';
-import {useRootLoaderData} from '~/root';
+import { NavLink } from '@remix-run/react';
+import type { FooterQuery, HeaderQuery } from 'storefrontapi.generated';
+import { useRootLoaderData } from '~/root';
+import { SocialMedia } from './atoms/SocialMediaBtn';
 
 export function Footer({
   menu,
   shop,
-}: FooterQuery & {shop: HeaderQuery['shop']}) {
+}: FooterQuery & { shop: HeaderQuery['shop'] }) {
   return (
     <footer className="footer">
       {menu && shop?.primaryDomain?.url && (
@@ -22,37 +23,56 @@ function FooterMenu({
   menu: FooterQuery['menu'];
   primaryDomainUrl: HeaderQuery['shop']['primaryDomain']['url'];
 }) {
-  const {publicStoreDomain} = useRootLoaderData();
+  const { publicStoreDomain } = useRootLoaderData();
 
   return (
-    <nav className="footer-menu" role="navigation">
-      {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
-        if (!item.url) return null;
-        // if the url is internal, we strip the domain
-        const url =
-          item.url.includes('myshopify.com') ||
-          item.url.includes(publicStoreDomain) ||
-          item.url.includes(primaryDomainUrl)
-            ? new URL(item.url).pathname
-            : item.url;
-        const isExternal = !url.startsWith('/');
-        return isExternal ? (
-          <a href={url} key={item.id} rel="noopener noreferrer" target="_blank">
-            {item.title}
-          </a>
-        ) : (
-          <NavLink
-            end
-            key={item.id}
-            prefetch="intent"
-            style={activeLinkStyle}
-            to={url}
-          >
-            {item.title}
-          </NavLink>
-        );
-      })}
-    </nav>
+    <>
+      <div className="footer-menu" role="navigation">
+        {/* cust. support */}
+        <div className='f-section-wrapper'>
+          <p className='f-section-btn'>Klantenservice</p>
+          <ul className='f-section-content'>
+            {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
+              if (!item.url) return null;
+              // if the url is internal, we strip the domain
+              const url =
+                item.url.includes('myshopify.com') ||
+                  item.url.includes(publicStoreDomain) ||
+                  item.url.includes(primaryDomainUrl)
+                  ? new URL(item.url).pathname
+                  : item.url;
+              const isExternal = !url.startsWith('/');
+              return isExternal ? (
+                <li><a href={url} key={item.id} rel="noopener noreferrer" target="_blank">
+                  {item.title}
+                </a></li>
+              ) : (
+                <li><NavLink
+                  end
+                  key={item.id}
+                  prefetch="intent"
+                  to={url}
+                >
+                  {item.title}
+                </NavLink>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        {/* shop info */}
+        <div className='f-section-wrapper'>
+          <p className='f-section-btn'>Luxium Jewels</p>
+          <ul className='f-section-content'>
+            <li>info@luxium-jewels.com</li>
+            <li>010-1234567</li>
+            <li>Rotterdam</li>
+          </ul>
+        </div>
+      </div>
+      <SocialMedia />
+    </>
   );
 }
 
