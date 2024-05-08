@@ -2,6 +2,9 @@ import { NavLink } from '@remix-run/react';
 import type { FooterQuery, HeaderQuery } from 'storefrontapi.generated';
 import { useRootLoaderData } from '~/root';
 import { SocialMedia } from './atoms/SocialMediaBtn';
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 export function Footer({
   menu,
@@ -25,13 +28,24 @@ function FooterMenu({
 }) {
   const { publicStoreDomain } = useRootLoaderData();
 
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  function setClass() { return (!isOpen) ? 'f-section-toggle' : 'f-section-content' }
+  function setChevron() { return (!isOpen) ? <FontAwesomeIcon icon={faChevronDown} /> : <FontAwesomeIcon icon={faChevronUp} /> }
+
   return (
     <>
       <div className="footer-menu" role="navigation">
         {/* cust. support */}
         <div className='f-section-wrapper'>
-          <p className='f-section-btn'>Klantenservice</p>
-          <ul className='f-section-content'>
+          <button
+            onClick={() => setIsOpen((open) => !open)}
+            className='f-section-btn'
+          >
+            Customer Support
+            {setChevron()}
+          </button>
+          <ul className={setClass()}>
             {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
               if (!item.url) return null;
               // if the url is internal, we strip the domain
@@ -61,16 +75,38 @@ function FooterMenu({
           </ul>
         </div>
 
-        {/* shop info */}
+        {/* product categories*/}
         <div className='f-section-wrapper'>
-          <p className='f-section-btn'>Luxium Jewels</p>
-          <ul className='f-section-content'>
-            <li>info@luxium-jewels.com</li>
-            <li>010-1234567</li>
-            <li>Rotterdam</li>
+          <button
+            onClick={() => setIsOpen((open) => !open)}
+            className='f-section-btn'
+          >
+            Discover
+            {setChevron()}
+          </button>
+          <ul className={setClass()}>
+            <li>Earrings</li>
+            <li>Rings</li>
+            <li>Necklaces</li>
           </ul>
         </div>
+
+      {/* shop info */}
+      <div className='f-section-wrapper'>
+        <button
+          onClick={() => setIsOpen((open) => !open)}
+          className='f-section-btn'
+        >
+          Luxium Jewels
+          {setChevron()}
+        </button>
+        <ul className={setClass()}>
+          <li>info@luxium-jewels.com</li>
+          <li>010-1234567</li>
+          <li>Rotterdam</li>
+        </ul>
       </div>
+    </div >
       <SocialMedia />
     </>
   );

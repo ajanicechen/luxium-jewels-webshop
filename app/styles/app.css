@@ -302,7 +302,7 @@ aside li {
 .footer-menu {
   @media (min-width: 45em) {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
   }
 }
@@ -312,7 +312,10 @@ aside li {
 }
 
 .f-section-wrapper{
+  width: 100%;
+
   @media (min-width: 45em) {
+    width: fit-content;
     display: flex;
     flex-flow: column nowrap;
     gap: 8px;
@@ -320,16 +323,31 @@ aside li {
 }
 
 .f-section-btn{
-  font-size: 14;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  font-size: 14px;
   font-weight: bold;
 
   padding: 16px 0;
+  border: none;
   border-bottom: 1px solid #E5E7EB;
+  background: white;
 
 
   @media (min-width: 45em) {
+    font-size: 16px;
+    pointer-events: none;
     border: none;
     padding: 0;
+
+    svg{
+      display: none;
+    }
   }
 }
 
@@ -339,12 +357,27 @@ aside li {
   flex-flow: column nowrap;
   gap: 8px;
 
+  font-size: 14px;
+
   @media (min-width: 45em) {
+    font-size: 16px;
     padding: 0;
   }
 
   li{
     margin: 0;
+  }
+}
+
+/* default shown on desktop but closed on mobile */
+.f-section-toggle{
+  display: none;
+
+  @media (min-width: 45em) {
+    padding: 16px 0;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 8px;
   }
 }
 
