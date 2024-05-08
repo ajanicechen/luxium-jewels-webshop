@@ -698,6 +698,22 @@ aside li {
   }
 }
 
+.btn-string{
+  display: block;
+
+  @media (min-width: 45em) {
+  display: none;
+  }
+}
+
+.btn-icon{
+  display: none;
+
+  @media (min-width: 45em) {
+    display: block;
+  }
+}
+
 .card-wrapper{
   display: flex;
   flex-flow: column nowrap;

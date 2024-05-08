@@ -90,8 +90,12 @@ function RecommendedProducts({
                         </small>
                       </div>
                       <button className='add-to-cart-btn'>
-                        {/* {isMobile ? 'add to cart' : <FontAwesomeIcon icon={faBagShopping} />} */}
-                        {(window.screen.width > 720) ? <FontAwesomeIcon icon={faBagShopping} /> : 'add to cart'}
+                        <span className="btn-string">
+                          add to cart
+                        </span>
+                        <span className='btn-icon'>
+                          <FontAwesomeIcon icon={faBagShopping} />
+                        </span>
                       </button>
                     </div>
                   </div>
