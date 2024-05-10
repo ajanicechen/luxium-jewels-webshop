@@ -5,6 +5,9 @@ import type {LayoutProps} from './Layout';
 import {useRootLoaderData} from '~/root';
 import UserIcon from 'public/images/icons/user_icon.svg';
 import shopLogo from 'public/images/shop_logo.svg';
+import Badge from '@mui/material/Badge';
+import {LuxiumTheme} from '~/components/theme/CustomTheme';
+import { ThemeProvider } from '@mui/material/styles';
 
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -145,8 +148,11 @@ function SearchToggle() {
 function CartBadge({count}: {count: number}) {
   return <a href="#cart-aside">
     {/* Cart */}
-    <FontAwesomeIcon icon={faBagShopping} />
-    {(count > 0) && <span className="count-badge">{count}</span>}
+    <ThemeProvider theme={LuxiumTheme}>
+    <Badge badgeContent={count} overlap="circular" color="info">
+      <FontAwesomeIcon icon={faBagShopping} />
+    </Badge>
+    </ThemeProvider>
     </a>;
 }
 
