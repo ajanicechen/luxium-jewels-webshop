@@ -57,11 +57,11 @@ function FooterMenu({
                   : item.url;
               const isExternal = !url.startsWith('/');
               return isExternal ? (
-                <li><a href={url} key={item.id} rel="noopener noreferrer" target="_blank">
+                <li key={item.id}><a href={url} rel="noopener noreferrer" target="_blank">
                   {item.title}
                 </a></li>
               ) : (
-                <li><NavLink
+                <li key={item.id}><NavLink
                   end
                   key={item.id}
                   prefetch="intent"
@@ -85,9 +85,9 @@ function FooterMenu({
             {setChevron()}
           </button>
           <ul className={setClass()}>
-            <li>Earrings</li>
-            <li>Rings</li>
-            <li>Necklaces</li>
+            <li key='Earrings'>Earrings</li>
+            <li key='Rings'>Rings</li>
+            <li key='Necklaces'>Necklaces</li>
           </ul>
         </div>
 
@@ -101,9 +101,9 @@ function FooterMenu({
           {setChevron()}
         </button>
         <ul className={setClass()}>
-          <li>info@luxium-jewels.com</li>
-          <li>010-1234567</li>
-          <li>Rotterdam</li>
+          <li key='mail'>info@luxium-jewels.com</li>
+          <li key='phone'>010-1234567</li>
+          <li key='location'>Rotterdam</li>
         </ul>
       </div>
     </div >
