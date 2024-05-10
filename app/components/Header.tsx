@@ -146,14 +146,15 @@ function SearchToggle() {
 }
 
 function CartBadge({count}: {count: number}) {
-  return <a href="#cart-aside">
-    {/* Cart */}
-    <ThemeProvider theme={LuxiumTheme}>
-    <Badge badgeContent={count} overlap="circular" color="info">
-      <FontAwesomeIcon icon={faBagShopping} />
-    </Badge>
-    </ThemeProvider>
-    </a>;
+  return (
+    <div className="cart-btn">
+      <a href="#cart-aside">
+      {/* Cart */}
+        <FontAwesomeIcon icon={faBagShopping} />
+      </a>
+      {(count > 0) && <span className="count-badge">{count}</span>}
+    </div>
+  );
 }
 
 function CartToggle({cart}: Pick<HeaderProps, 'cart'>) {

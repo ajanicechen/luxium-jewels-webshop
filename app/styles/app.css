@@ -266,14 +266,28 @@ aside li {
 
 /* group of ctas on the right */
 .header-ctas {
-  align-items: center;
   display: flex;
-  grid-gap: 24px;
+  align-items: center;
+  grid-gap: 16px;
   margin-left: auto;
 
-  svg {
-    color: #311C26;
+  a{
+    display: flex;
+    align-items: center;
+
+    svg {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      color: #311C26;
+      height: 24px;
+    }
   }
+}
+
+.cart-btn{
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 /* indiv icon on the right */
@@ -542,9 +556,10 @@ aside li {
 
 .count-badge{
   position: relative;
-  top: -8px;
-  left: -4px;
-  padding: 4px 8px;
+  top: -2px;
+  left: -16px;
+  padding: 3px 8px;
+  height: fit-content;
   border-radius: 50%;
 
   background: #779DBB;
