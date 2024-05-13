@@ -9,62 +9,77 @@ import { faGift } from "@fortawesome/free-solid-svg-icons";
 export function UspCarousel() {
   return (
     <>
-      <div className="carousel-container">
-        <ul className='carousel-wrapper'>
-          <li className='carousel-item'>
+      <div className="usp-carousel-container">
+        <ul className='usp-carousel-wrapper'>
+          <li className='usp-carousel-item'>
             <FontAwesomeIcon icon={faTruck} />
             Gratis thuisbezorgd vanaf €50,-
           </li>
-          <li className='carousel-item'>
+          <li className='usp-carousel-item'>
             <FontAwesomeIcon icon={faRotateLeft} />
             Gratis retourneren binnen 30 dagen
           </li>
-          <li className='carousel-item'>
+          <li className='usp-carousel-item'>
             <FontAwesomeIcon icon={faGift} />
             Gratis cadeauverpakking
           </li>
         </ul>
 
-        <ul className='carousel-wrapper'>
-          <li className='carousel-item'>
+        <ul className='usp-carousel-wrapper'>
+          <li className='usp-carousel-item'>
             <FontAwesomeIcon icon={faTruck} />
             Gratis thuisbezorgd vanaf €50,-
           </li>
-          <li className='carousel-item'>
+          <li className='usp-carousel-item'>
             <FontAwesomeIcon icon={faRotateLeft} />
             Gratis retourneren binnen 30 dagen
           </li>
-          <li className='carousel-item'>
+          <li className='usp-carousel-item'>
             <FontAwesomeIcon icon={faGift} />
             Gratis cadeauverpakking
           </li>
         </ul>
 
-        <ul className='carousel-wrapper'>
-          <li className='carousel-item'>
+        <ul className='usp-carousel-wrapper'>
+          <li className='usp-carousel-item'>
             <FontAwesomeIcon icon={faTruck} />
             Gratis thuisbezorgd vanaf €50,-
           </li>
-          <li className='carousel-item'>
+          <li className='usp-carousel-item'>
             <FontAwesomeIcon icon={faRotateLeft} />
             Gratis retourneren binnen 30 dagen
           </li>
-          <li className='carousel-item'>
+          <li className='usp-carousel-item'>
             <FontAwesomeIcon icon={faGift} />
             Gratis cadeauverpakking
           </li>
         </ul>
 
-        <ul className='carousel-wrapper'>
-          <li className='carousel-item'>
+        <ul className='usp-carousel-wrapper'>
+          <li className='usp-carousel-item'>
             <FontAwesomeIcon icon={faTruck} />
             Gratis thuisbezorgd vanaf €50,-
           </li>
-          <li className='carousel-item'>
+          <li className='usp-carousel-item'>
             <FontAwesomeIcon icon={faRotateLeft} />
             Gratis retourneren binnen 30 dagen
           </li>
-          <li className='carousel-item'>
+          <li className='usp-carousel-item'>
+            <FontAwesomeIcon icon={faGift} />
+            Gratis cadeauverpakking
+          </li>
+        </ul>
+
+        <ul className='usp-carousel-wrapper'>
+          <li className='usp-carousel-item'>
+            <FontAwesomeIcon icon={faTruck} />
+            Gratis thuisbezorgd vanaf €50,-
+          </li>
+          <li className='usp-carousel-item'>
+            <FontAwesomeIcon icon={faRotateLeft} />
+            Gratis retourneren binnen 30 dagen
+          </li>
+          <li className='usp-carousel-item'>
             <FontAwesomeIcon icon={faGift} />
             Gratis cadeauverpakking
           </li>

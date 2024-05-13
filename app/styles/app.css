@@ -141,13 +141,13 @@ aside li {
   }
 }
 
-.carousel-container {
+.usp-carousel-container {
   margin: 24px 0;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.carousel-wrapper {
+.usp-carousel-wrapper {
   display: inline-flex;
   gap: 40px;
   margin: 0 20px;
@@ -156,7 +156,7 @@ aside li {
   animation: 5s slide infinite linear;
 }
 
-.carousel-item {
+.usp-carousel-item {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -166,8 +166,20 @@ aside li {
   margin: 0;
 }
 
-.carousel-wrapper:hover {
-  animation-play-state: paused;
+.header-usp{
+  background: #925471;
+  color: white;
+  font-size: 14px;
+  padding: 8px 0; 
+
+  .usp-carousel-container{
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+
 }
 
 /*
@@ -667,7 +679,7 @@ aside li {
     transition: all 1s ease-out;
   }
 
-  @media (min-width: 1536) {
+  @media (min-width: 1536px) {
     grid-template-columns: repeat(6, 1fr);
   }
 }
