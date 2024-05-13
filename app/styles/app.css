@@ -320,15 +320,18 @@ aside li {
 }
 
 .footer-menu {
+  font-size: 14px;
+
+  li, a{
+    color: var(--color-dark);
+  }
+  
   @media (min-width: 45em) {
     display: flex;
     align-items: start;
     justify-content: space-between;
+    font-size: 16px;
   }
-}
-
-.footer-menu a {
-  color: var(--color-dark);
 }
 
 .f-section-wrapper{
