@@ -132,35 +132,28 @@ aside li {
 * --------------------------------------------------
 */
 
-@keyframes scroll {
-
-  /* 0% { transform: translateX(0); }
-	100% { transform: translateX(calc(-250px * 7))} */
-  0% {
-    transform: translate(0, 0);
+@keyframes slide {
+  from {
+    transform: translateX(0);
   }
-
-  100% {
-    transform: translate(-100%, 0);
+  to {
+    transform: translateX(-100%);
   }
 }
 
 .carousel-container {
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 40px;
+  margin: 24px 0;
   overflow: hidden;
   white-space: nowrap;
 }
 
 .carousel-wrapper {
-  display: flex;
-  flex-flow: row nowrap;
+  display: inline-flex;
   gap: 40px;
+  margin: 0 20px;
 
-  /* //overflow: hidden; */
-  /* animation: scroll 40s linear infinite; */
-  width: fit-content;
+  overflow: hidden;
+  animation: 5s slide infinite linear;
 }
 
 .carousel-item {
@@ -170,6 +163,7 @@ aside li {
   gap: 8px;
 
   white-space: nowrap;
+  margin: 0;
 }
 
 .carousel-wrapper:hover {
