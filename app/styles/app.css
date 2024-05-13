@@ -132,48 +132,54 @@ aside li {
 * --------------------------------------------------
 */
 
-@keyframes scroll {
-
-  /* 0% { transform: translateX(0); }
-	100% { transform: translateX(calc(-250px * 7))} */
-  0% {
-    transform: translate(0, 0);
+@keyframes slide {
+  from {
+    transform: translateX(0);
   }
-
-  100% {
-    transform: translate(-100%, 0);
+  to {
+    transform: translateX(-100%);
   }
 }
 
-.carousel-container {
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 40px;
+.usp-carousel-container {
+  margin: 24px 0;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.carousel-wrapper {
-  display: flex;
-  flex-flow: row nowrap;
+.usp-carousel-wrapper {
+  display: inline-flex;
   gap: 40px;
+  margin: 0 20px;
 
-  /* //overflow: hidden; */
-  /* animation: scroll 40s linear infinite; */
-  width: fit-content;
+  overflow: hidden;
+  animation: 5s slide infinite linear;
 }
 
-.carousel-item {
+.usp-carousel-item {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   gap: 8px;
 
   white-space: nowrap;
+  margin: 0;
 }
 
-.carousel-wrapper:hover {
-  animation-play-state: paused;
+.header-usp{
+  background: #925471;
+  color: white;
+  font-size: 14px;
+  padding: 8px 0; 
+
+  .usp-carousel-container{
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+
 }
 
 /*
@@ -314,15 +320,18 @@ aside li {
 }
 
 .footer-menu {
+  font-size: 14px;
+
+  li, a{
+    color: var(--color-dark);
+  }
+  
   @media (min-width: 45em) {
     display: flex;
     align-items: start;
     justify-content: space-between;
+    font-size: 16px;
   }
-}
-
-.footer-menu a {
-  color: var(--color-dark);
 }
 
 .f-section-wrapper{
@@ -673,7 +682,7 @@ aside li {
     transition: all 1s ease-out;
   }
 
-  @media (min-width: 1536) {
+  @media (min-width: 1536px) {
     grid-template-columns: repeat(6, 1fr);
   }
 }
