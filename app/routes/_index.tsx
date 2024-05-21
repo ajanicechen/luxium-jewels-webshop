@@ -89,7 +89,7 @@ function RecommendedProducts({
                           <Money data={product.priceRange.minVariantPrice} />
                         </small>
                       </div>
-                      <button className='add-to-cart-btn'>
+                      <button aria-label='add to cart button' className='add-to-cart-btn'>
                         <span className="btn-string">
                           add to cart
                         </span>

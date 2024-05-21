@@ -119,7 +119,7 @@ function HeaderCtas({
     <nav className="header-ctas" role="navigation">
       {/* <HeaderMenuMobileToggle /> */}
       <SearchToggle />
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
+      <NavLink aria-label='Account' prefetch="intent" to="/account" style={activeLinkStyle}>
         <Suspense fallback="Sign in">
           <Await resolve={isLoggedIn} errorElement="Sign in">
             {/* {(isLoggedIn) => (isLoggedIn ? 'Account' : 'Sign in')} */}
@@ -134,7 +134,7 @@ function HeaderCtas({
 
 function HeaderMenuMobileToggle() {
   return (
-    <a className="header-menu-mobile-toggle" href="#mobile-menu-aside">
+    <a aria-label='Open menu' className="header-menu-mobile-toggle" href="#mobile-menu-aside">
       <h3>☰</h3>
     </a>
   );
@@ -143,7 +143,7 @@ function HeaderMenuMobileToggle() {
 //btn to toggle search aside dialog
 function SearchToggle() {
   return (
-    <a href="#search-aside">
+    <a aria-label='Search for your items' href="#search-aside">
       <FontAwesomeIcon icon={faMagnifyingGlass} />
       </a>
   )
@@ -152,7 +152,7 @@ function SearchToggle() {
 function CartBadge({count}: {count: number}) {
   return (
     <div className="cart-btn">
-      <a href="#cart-aside">
+      <a aria-label='Go to cart' href="#cart-aside">
       {/* Cart */}
         <FontAwesomeIcon icon={faBagShopping} />
       </a>
