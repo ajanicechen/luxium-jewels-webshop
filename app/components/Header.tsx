@@ -3,21 +3,14 @@ import {Suspense} from 'react';
 import type {HeaderQuery} from 'storefrontapi.generated';
 import type {LayoutProps} from './Layout';
 import {useRootLoaderData} from '~/root';
-import UserIcon from 'public/images/icons/user_icon.svg';
 import shopLogo from 'public/images/shop_logo.svg';
-import Badge from '@mui/material/Badge';
-import {LuxiumTheme} from '~/components/theme/CustomTheme';
-import { ThemeProvider } from '@mui/material/styles';
 
-import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { UspCarousel } from './UspCarousel';
-
-//import { Badge } from '@mui/material';
 
 type HeaderProps = Pick<LayoutProps, 'header' | 'cart' | 'isLoggedIn'>;
 
@@ -32,9 +25,8 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
       </div>
       <div className="header">
         <HeaderMenuMobileToggle />
-        <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-          {/* <strong>{shop.name}</strong> */}
-          <img src={shopLogo} alt='logo luxium jewels' />
+        <NavLink className='logo-container' prefetch="intent" to="/" style={activeLinkStyle} end>
+          <img src={shopLogo} alt='logo luxium jewels' className='logo-img'/>
         </NavLink>
         <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
       </div>
