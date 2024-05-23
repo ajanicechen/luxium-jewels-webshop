@@ -3,21 +3,14 @@ import {Suspense} from 'react';
 import type {HeaderQuery} from 'storefrontapi.generated';
 import type {LayoutProps} from './Layout';
 import {useRootLoaderData} from '~/root';
-import UserIcon from 'public/images/icons/user_icon.svg';
 import shopLogo from 'public/images/shop_logo.svg';
-import Badge from '@mui/material/Badge';
-import {LuxiumTheme} from '~/components/theme/CustomTheme';
-import { ThemeProvider } from '@mui/material/styles';
 
-import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { UspCarousel } from './UspCarousel';
-
-//import { Badge } from '@mui/material';
 
 type HeaderProps = Pick<LayoutProps, 'header' | 'cart' | 'isLoggedIn'>;
 
@@ -32,9 +25,8 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
       </div>
       <div className="header">
         <HeaderMenuMobileToggle />
-        <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-          {/* <strong>{shop.name}</strong> */}
-          <img src={shopLogo} alt='logo luxium jewels' />
+        <NavLink className='logo-container' prefetch="intent" to="/" style={activeLinkStyle} end>
+          <img src={shopLogo} alt='logo luxium jewels' className='logo-img'/>
         </NavLink>
         <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
       </div>
@@ -119,7 +111,7 @@ function HeaderCtas({
     <nav className="header-ctas" role="navigation">
       {/* <HeaderMenuMobileToggle /> */}
       <SearchToggle />
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
+      <NavLink aria-label='Account' prefetch="intent" to="/account" style={activeLinkStyle}>
         <Suspense fallback="Sign in">
           <Await resolve={isLoggedIn} errorElement="Sign in">
             {/* {(isLoggedIn) => (isLoggedIn ? 'Account' : 'Sign in')} */}
@@ -134,7 +126,7 @@ function HeaderCtas({
 
 function HeaderMenuMobileToggle() {
   return (
-    <a className="header-menu-mobile-toggle" href="#mobile-menu-aside">
+    <a aria-label='Open menu' className="header-menu-mobile-toggle" href="#mobile-menu-aside">
       <h3>☰</h3>
     </a>
   );
@@ -143,7 +135,7 @@ function HeaderMenuMobileToggle() {
 //btn to toggle search aside dialog
 function SearchToggle() {
   return (
-    <a href="#search-aside">
+    <a aria-label='Search for your items' href="#search-aside">
       <FontAwesomeIcon icon={faMagnifyingGlass} />
       </a>
   )
@@ -152,7 +144,7 @@ function SearchToggle() {
 function CartBadge({count}: {count: number}) {
   return (
     <div className="cart-btn">
-      <a href="#cart-aside">
+      <a aria-label='Go to cart' href="#cart-aside">
       {/* Cart */}
         <FontAwesomeIcon icon={faBagShopping} />
       </a>
