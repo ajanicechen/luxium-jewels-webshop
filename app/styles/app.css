@@ -223,7 +223,7 @@ aside li {
   display: none;
   grid-gap: 1rem;
 
-  @media (min-width: 45em) {
+  @media (min-width: 48em) {
     display: flex;
     grid-gap: 1rem;
   }
