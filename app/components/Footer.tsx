@@ -1,5 +1,5 @@
 import { NavLink } from '@remix-run/react';
-import type { FooterQuery, HeaderQuery, FeaturedCollectionQuery } from 'storefrontapi.generated';
+import type { FooterQuery, HeaderQuery } from 'storefrontapi.generated';
 import { useRootLoaderData } from '~/root';
 import { SocialMedia } from './atoms/SocialMediaBtn';
 import React from 'react';
