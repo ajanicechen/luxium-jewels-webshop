@@ -85,7 +85,8 @@ export async function loader({ context }: LoaderFunctionArgs) {
   const footerPromise = storefront.query(FOOTER_QUERY, {
     cache: storefront.CacheLong(),
     variables: {
-      footerMenuHandle: 'footer', // Adjust to your footer menu handle
+      footerMenuHandle: 'footer',
+      collectionMenuHandle: 'collection'  // Adjust to your footer menu handle
     },
   });
 
@@ -240,9 +241,13 @@ const FOOTER_QUERY = `#graphql
   query Footer(
     $country: CountryCode
     $footerMenuHandle: String!
+    $collectionMenuHandle: String!
     $language: LanguageCode
   ) @inContext(language: $language, country: $country) {
     menu(handle: $footerMenuHandle) {
+      ...Menu
+    }
+    collection: menu(handle: $collectionMenuHandle) {
       ...Menu
     }
   }

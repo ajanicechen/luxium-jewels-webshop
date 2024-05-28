@@ -38,7 +38,7 @@ export function Layout({
       <main>{children}</main>
       <Suspense>
         <Await resolve={footer}>
-          {(footer) => <Footer menu={footer?.menu} shop={header?.shop} />}
+          {(footer) => <Footer menu={footer?.menu} collection={footer?.collection}shop={header?.shop} />}
         </Await>
       </Suspense>
     </>
