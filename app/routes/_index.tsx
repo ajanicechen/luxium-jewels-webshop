@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 
 export const meta: MetaFunction = () => {
-  return [{ title: 'Demoshop | Home' }];
+  return [{ title: 'Luxium Jewels | Home' }];
 };
 
 export async function loader({ context }: LoaderFunctionArgs) {
@@ -53,7 +53,7 @@ function FeaturedCollection({
           <Image data={image} sizes="100vw" />
         </div>
       )}
-      <h1>{collection.title}</h1>
+      <h1>Check out our {collection.title} collection!</h1>
     </Link>
   );
 }
